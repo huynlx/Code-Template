@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import RenderRouter from 'src/routes';
 
 // i18n
 import './i18n';
@@ -29,6 +30,7 @@ const App = () => {
           <option value="en">EN</option>
         </select>
       </div>
+      <RenderRouter />
     </>
   );
 };
