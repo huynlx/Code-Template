@@ -1,4 +1,6 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+// route
 import RenderRouters from 'src/routes';
 
 // i18n
@@ -14,9 +16,9 @@ import 'src/styles/antd.less';
  */
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <RenderRouters />
-    </BrowserRouter>
+    </Router>
   );
 };
 

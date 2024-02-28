@@ -14,8 +14,8 @@ export const buildResponseError = (response: any) => {
   return {
     ...response,
     error: {
-      key: _get(response, 'data.error', null),
-      items: _get(response, 'data.data', {})
+      key: _get(response, 'error', null),
+      items: _get(response, 'data', {})
     }
   };
 };
@@ -27,6 +27,6 @@ export const buildResponseError = (response: any) => {
 export const buildResponseSuccess = (response: any) => {
   return {
     ...response,
-    successfulData: _get(response, 'data.data', {})
+    successfulData: _get(response, 'data', {})
   };
 };

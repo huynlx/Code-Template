@@ -5,7 +5,7 @@
  */
 const useAuth = () => {
   // TODO:
-  return false;
+  return true;
 };
 
 export default useAuth;

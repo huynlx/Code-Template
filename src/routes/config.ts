@@ -17,7 +17,7 @@ const ROUTERS: RouterProps[] = [
   {
     path: '/',
     component: HomePage,
-    isPrivate: false,
+    isPrivate: true,
     children: []
   },
   {
