@@ -1,18 +1,7 @@
 import axios from 'axios';
 import UserService, { HandleRefreshToken, handleExpire } from './user';
 import { getAuthenticated } from 'src/common/localStorage';
-
-export enum ResponseStatusCode {
-  HTTP_FORBIDDEN = 403,
-  HTTP_UNAUTHORIZED = 401,
-  HTTP_OK = 200,
-  HTTP_TOO_MANY_REQUESTS = 429,
-  HTTP_NOT_FOUND = 404,
-  HTTP_BAD_REQUEST = 400,
-  HTTP_INTERNAL_SERVER_ERROR = 500,
-  HTTP_CONFLICT = 409,
-  HTTP_UN_PROCESSABLE_ENTITY = 422
-}
+import { RESPONSE_STATUS_AUTHOR } from 'src/constants/api';
 
 // timeout in 3 minutes
 const TIMEOUT_REQUEST_SERVER = 60 * 3000;
@@ -58,10 +47,10 @@ axiosClient.interceptors.response.use(
     }
     if (error && error.response) {
       switch (error.response.status) {
-        case ResponseStatusCode.HTTP_UNAUTHORIZED:
+        case RESPONSE_STATUS_AUTHOR.UNAUTHORIZED:
           handleExpire();
           break;
-        case ResponseStatusCode.HTTP_FORBIDDEN:
+        case RESPONSE_STATUS_AUTHOR.FORBIDDEN:
           // ...something
           break;
         default:

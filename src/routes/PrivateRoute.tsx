@@ -1,25 +1,30 @@
-import { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { Redirect, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, useNavigate } from 'react-router-dom';
+import useAuth from 'src/hooks/useAuth';
 import { RouterProps } from 'src/routes/config';
-import { AppState } from 'src/store/reducers';
 
 interface PrivateRouteProps extends RouterProps {
-  component: any;
   state?: any;
 }
 
-const PrivateRoute: FC<PrivateRouteProps> = (props) => {
-  const { component: Component, path } = props;
-  const { isAuth } = useSelector((state: AppState) => state.auth);
-  const location = useLocation();
+/**
+ * PrivateRoute component for handling private routes.
+ *
+ * @param {PrivateRouteProps} props - the props for the PrivateRoute component
+ * @return {JSX.Element} The Route component or null
+ */
+const PrivateRoute = (props: PrivateRouteProps) => {
+  const { key, path, component: Component } = props;
+  const isAuth = useAuth();
+  const navigate = useNavigate();
 
-  return (
-    <Route
-      path={path}
-      element={isAuth ? <Component /> : <Redirect to="/sign-in" state={{ from: location }} />}
-    />
-  );
+  useEffect(() => {
+    if (!isAuth) {
+      navigate('/sign-in', { replace: true });
+    }
+  }, [isAuth]);
+
+  return isAuth ? <Route key={key} path={path} element={<Component />} /> : null;
 };
 
 export default PrivateRoute;

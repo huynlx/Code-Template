@@ -1,20 +1,30 @@
 import { lazy } from 'react';
 
 // pages
-const Home = lazy(() => import('src/pages/Home'));
+const HomePage = lazy(() => import('src/pages/Home'));
 const NotFoundPage = lazy(() => import('src/pages/NotFound'));
+const SignInPage = lazy(() => import('src/pages/Sign-In'));
 
 export interface RouterProps {
+  key?: number;
   path: string;
   component: any;
   isPrivate: boolean;
+  children?: RouterProps[];
 }
 
 const ROUTERS: RouterProps[] = [
   {
-    path: '/home',
-    component: Home,
-    isPrivate: true
+    path: '/',
+    component: HomePage,
+    isPrivate: false,
+    children: []
+  },
+  {
+    path: '/sign-in',
+    component: SignInPage,
+    isPrivate: false,
+    children: []
   },
   {
     path: '*',
