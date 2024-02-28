@@ -7,6 +7,7 @@ import './i18n';
 
 // styles
 import 'src/styles/antd.less';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   const { t, i18n } = useTranslation();
@@ -30,7 +31,9 @@ const App = () => {
           <option value="en">EN</option>
         </select>
       </div>
-      <RenderRouter />
+      <BrowserRouter>
+        <RenderRouter />
+      </BrowserRouter>
     </>
   );
 };
