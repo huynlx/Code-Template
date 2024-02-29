@@ -1,4 +1,4 @@
-export const SIDEBARS = {
+export const SIDERS = {
   HOME: {
     MAIN: '/'
   }

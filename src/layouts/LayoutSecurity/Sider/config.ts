@@ -1,9 +1,9 @@
-import { SIDEBARS } from 'src/constants';
+import { SIDERS } from 'src/constants/sider';
 import { IParentMenu } from 'src/models/layout.types';
 
 export const SYSTEM_MENUS: IParentMenu[] = [
   {
-    path: SIDEBARS.HOME.MAIN,
+    path: SIDERS.HOME.MAIN,
     title: 'Trang chủ'
   }
 ];
