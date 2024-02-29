@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import vitePluginImp from 'vite-plugin-imp';
-import * as path from 'path';
+import svgrPlugin from 'vite-plugin-svgr';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,9 +30,16 @@ export default defineConfig({
           style: (name) => `antd/es/${name}/style`
         }
       ]
-    })
+    }),
+    svgrPlugin()
   ],
   resolve: {
-    alias: [{ find: 'src', replacement: path.resolve(__dirname, 'src') }]
+    alias: [{ find: 'src', replacement: resolve(__dirname, 'src') }]
+  },
+  server: {
+    port: 3000
+  },
+  preview: {
+    port: 8080
   }
 });

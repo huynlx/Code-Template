@@ -1,7 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, useNavigate } from 'react-router-dom';
 import useAuth from 'src/hooks/useAuth';
 import { RouterProps } from 'src/routes/config';
+
+// layout
+import WrappedLayoutSecurity from 'src/layouts/LayoutSecurity';
+
+// types
+import { IParentMenu } from 'src/models/layout.types';
 
 interface PrivateRouteProps extends RouterProps {
   state?: any;
@@ -17,6 +23,7 @@ const PrivateRoute = (props: PrivateRouteProps) => {
   const { key, path, component: Component } = props;
   const isAuth = useAuth();
   const navigate = useNavigate();
+  const [currentMenus] = useState<IParentMenu[]>([]);
 
   useEffect(() => {
     if (!isAuth) {
@@ -24,7 +31,17 @@ const PrivateRoute = (props: PrivateRouteProps) => {
     }
   }, [isAuth]);
 
-  return isAuth ? <Route key={key} path={path} element={<Component />} /> : null;
+  return isAuth ? (
+    <Route
+      key={key}
+      path={path}
+      element={
+        <WrappedLayoutSecurity menus={currentMenus}>
+          <Component />
+        </WrappedLayoutSecurity>
+      }
+    />
+  ) : null;
 };
 
 export default PrivateRoute;

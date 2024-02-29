@@ -33,9 +33,9 @@ const RouteWithSubRouters = (props: RouterProps, key: number) => {
 const RenderRouters = () => {
   return (
     <Suspense fallback={'Loading...'}>
-      <main>
+      <div id="layout-wrapper">
         <Routes>{ROUTERS.map((el, key) => RouteWithSubRouters(el, key))}</Routes>
-      </main>
+      </div>
     </Suspense>
   );
 };
