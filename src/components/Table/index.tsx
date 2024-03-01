@@ -12,6 +12,8 @@ import { LoadingTypes } from 'src/models/store.types';
 
 // constants
 import { PAGE_SIZE_OPTIONS } from 'src/constants/table';
+
+// helpers
 import { countRowNumberTable, hasSoftTable, sorterTableUtils } from 'src/helpers/table';
 
 interface VTableProps {
