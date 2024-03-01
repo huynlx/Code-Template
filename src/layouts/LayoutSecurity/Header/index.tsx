@@ -16,10 +16,7 @@ type HeaderProps = {
 
 const Header: FC<HeaderProps> = ({ collapsed, setCollapsed }) => {
   return (
-    <Layout.Header className="relative bg-white" style={headerStyle}>
-      <div className="absolute text-black top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">
-        Header
-      </div>
+    <Layout.Header className="fixed w-full bg-white" style={headerStyle}>
       <Button
         type="text"
         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}

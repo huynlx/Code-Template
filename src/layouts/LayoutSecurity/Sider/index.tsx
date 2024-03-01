@@ -6,7 +6,9 @@ const siderStyle: React.CSSProperties = {
   textAlign: 'center',
   lineHeight: '120px',
   color: '#fff',
-  minHeight: '100vh'
+  position: 'fixed',
+  zIndex: 1,
+  height: '100%'
 };
 
 type SiderProps = {
@@ -30,7 +32,7 @@ const Sider: FC<SiderProps> = ({ collapsed, menus }) => {
       width="13%"
       style={siderStyle}>
       <div className="h-full flex justify-center items-center">Sider</div>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={menus} />
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={['2']} items={menus} /> {/* TODO: */}
     </Layout.Sider>
   );
 };

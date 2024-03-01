@@ -22,11 +22,23 @@ const layoutStyle = {
   maxWidth: '100%'
 };
 
+const mainStyle = {
+  marginLeft: 250,
+  height: '100vh',
+  transition: 'all 0.2s'
+};
+
+const mainStyleCollapsed = {
+  ...mainStyle,
+  marginLeft: 80
+};
+
 const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   minHeight: 120,
   lineHeight: '120px',
-  color: '#fff'
+  color: '#fff',
+  marginTop: 64
 };
 
 /**
@@ -43,12 +55,12 @@ const WrappedLayoutSecurity: FC<LayoutSecurityProps> = ({ children, menus }) => 
       <Layout style={layoutStyle}>
         {/* ----------------------------SIDER--------------------------- */}
         <Sider collapsed={collapsed} menus={menus} />
-        <Layout>
+        <Layout style={collapsed ? mainStyleCollapsed : mainStyle}>
           {/* ---------------------------HEADER------------------------- */}
           <Header collapsed={collapsed} setCollapsed={setCollapsed} />
           {/* ---------------------------CONTENT------------------------ */}
           <Content className="bg-body-bg" style={contentStyle}>
-            <section>{children}</section>
+            {children}
           </Content>
           {/* ---------------------------FOOTER------------------------- */}
           <Footer />
